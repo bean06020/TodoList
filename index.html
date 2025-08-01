@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minimalist To-Do Wireframe</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="./css/todolist.css">
 
@@ -44,14 +47,14 @@
         <div class="w-64 p-6 border-r bg-gray-50 overflow-y-auto">
             <h2 class="text-xs uppercase tracking-wider text-gray-500 mb-3">Folders</h2>
             <ul class="space-y-2">
-                <li class="sidebar-item active p-2 flex items-center bg-white rounded hover:bg-gray-100">
+                <li class="sidebar-item p-2 flex items-center bg-white rounded hover:bg-gray-100">
                     <svg class="w-4 h-4 mr-2 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                     </svg>
                     <span class="text-sm">General</span>
                 </li>
-                <li class="sidebar-item active p-2 flex items-center bg-white rounded hover:bg-gray-100">
+                <li class="sidebar-item p-2 flex items-center bg-white rounded hover:bg-gray-100">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="w-4 h-4 mr-2 text-gray-600">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -60,7 +63,7 @@
 
                     <span class="text-sm">Work</span>
                 </li>
-                <li class="sidebar-item active p-2 flex items-center bg-white rounded hover:bg-gray-100">
+                <li class="sidebar-item  p-2 flex items-center bg-white rounded hover:bg-gray-100">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="w-4 h-4 mr-2 text-gray-600">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -68,7 +71,7 @@
                     </svg>
 
                     <span class="text-sm">Personal</span>
-                <li class="sidebar-item active p-2 flex items-center bg-white rounded hover:bg-gray-100">
+                <li class="sidebar-item p-2 flex items-center bg-white rounded hover:bg-gray-100">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="w-4 h-4 mr-2 text-gray-600">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -92,9 +95,12 @@
                         <p id="today-date" class="text-gray-600 text-sm"></p>
                     </div>
                     <div class="bg-gray-50 rounded-lg p-3 max-w-md">
-                        <p class="text-sm text-gray-600">"Life will find away"</p>
-                        <p class="text-xs text-gray-500 mt-1 text-right">— Jurassic Park</p>
+                        <p id="quote-text" class="text-sm text-gray-600 font-mono">"Life will find a way"</p>
+                        <p id="quote-author"
+                            class="font-['Dancing_Script',cursive] text-xs text-gray-500 mt-1 text-right">— Jurassic
+                            Park</p>
                     </div>
+
                 </div>
             </div>
 
@@ -114,14 +120,6 @@
                             class="bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-sm">Add</button>
 
                     </div>
-                    <div class="mt-2"> <!-- 新增分類下拉選單 -->
-                        <select id="categorySelect" class="border rounded p-1 text-sm">
-                            <option value="general">General</option>
-                            <option value="work">Work</option>
-                            <option value="personal">Personal</option>
-                            <option value="study">Study</option>
-                        </select>
-                    </div>
                 </div>
 
                 <!-- Task Categories -->
@@ -139,9 +137,10 @@
             </div>
         </div>
     </div>
-
+    <script src="./js/index_quote.js"></script>
     <script src="./js/todoList_date.js"></script>
     <script src="./js/todolist_addtask.js"></script>
+
 </body>
 
 </html>

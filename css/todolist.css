@@ -3,6 +3,9 @@ body {
     background-color: #fafafa;
     color: #333;
 }
+.sidebar-item {
+  cursor: pointer;
+}
 
 .sidebar-item.active {
     background-color: #f0f0f0;
@@ -22,7 +25,12 @@ body {
     color: #aaa;
 }
 
-.quote-text {
-    font-style: italic;
-    font-weight: 300;
+
+.sidebar-item.active {
+  background-color: #e0f2fe; /* 淡藍底 */
+  color: #0284c7; /* 深藍字 */
+  font-weight: 600;
+}
+.sidebar-item.active svg {
+  stroke: #0284c7;
 }
