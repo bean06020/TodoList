@@ -1,0 +1,50 @@
+/* Custom CSS for Pomodoro Timer */
+
+/* Base styles from your existing CSS */
+body {
+    font-family: 'Helvetica Neue', sans-serif;
+    background-color: #fafafa; /* Very light gray, almost white */
+    color: #333; /* Dark gray for main text */
+}
+
+/* Container for the whole Pomodoro UI */
+.pomodoro-container {
+    width: 100%;
+    
+}
+
+/* Custom checkbox styling to match your Todo List more closely if needed, or rely on Tailwind forms plugin */
+.task-checkbox:checked {
+    background-color: #333; /* Dark gray for checked state */
+    border-color: #333; /* Dark gray border when checked */
+}
+.task-checkbox:checked + .task-text {
+    text-decoration: line-through;
+    color: #aaa; /* Lighter gray for completed task text */
+}
+
+/* Timer Circle Styles */
+.timer-circle-container {
+    /* Tailwind classes handle relative, w-64, h-64, md:w-80, md:h-80, rounded-full, flex, items-center, justify-center, bg-white, border, border-gray-200, shadow-md */
+    position: relative; /* Ensure children can be positioned absolutely */
+}
+
+.timer-progress-fill {
+    /* Initial state, 50% polygon is just for demonstration, JS will change this */
+    /* This creates a semi-circle fill, which JS will rotate/expand */
+    transform-origin: center center;
+    transition: clip-path 0.1s linear;
+    clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 0%); /* Example: fills left half */
+    /* A simpler approach for filling might involve rotating a masked div or using conic-gradient */
+}
+
+
+/* Specific styling for the Start button as per request */
+.buttons-container { /* Target the Start button specifically */
+    padding-left: 1.15rem; /* Slightly smaller horizontal padding for 'Start' button */
+    padding-right: 1.15rem;
+    padding-top: 0.5rem; /* Slightly smaller vertical padding */
+    padding-bottom: 0.5rem;
+    font-size: 1.1rem; /* Adjust font size if needed to fit */
+}
+
