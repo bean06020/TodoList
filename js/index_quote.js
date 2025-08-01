@@ -3,10 +3,10 @@ const quotes = [
   { text: "Stay hungry, stay foolish.", author: "Steve Jobs" },
   { text: "Do one thing every day that scares you.", author: "Eleanor Roosevelt" },
   { text: "The only limit to our realization of tomorrow is our doubts of today.", author: "F. D. Roosevelt" },
-  { text: "成功是跌倒九次後，仍能站起來十次。", author: "Unknown" }
-  { text: "No cross, no crown. ", author: "Unknown" }
-  { text: "Spend your life in your own way.", author: "Unknown" }
-  { text: "There are so many beautiful reasons to be happy.", author: "Unknown" }
+  { text: "成功是跌倒九次後，仍能站起來十次。", author: "Unknown" },
+  { text: "No cross, no crown. ", author: "Unknown" },
+  { text: "Spend your life in your own way.", author: "Unknown" },
+  { text: "There are so many beautiful reasons to be happy.", author: "Unknown" },
 
 ];
 
