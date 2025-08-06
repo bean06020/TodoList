@@ -1,12 +1,11 @@
 const taskInput = document.getElementById('taskInput');
 const addButton = document.getElementById('addButton');
 const taskList = document.querySelector('#taskList');
-const categorySelect = document.getElementById('categorySelect');
 
 // ✅ 勾選 checkbox 時，加上刪除線樣式
 function bindCheckboxToggle(checkbox) {
     checkbox.addEventListener('change', function () {
-        const taskText = this.nextElementSibling;
+        const taskText = this.closest('.task-item').querySelector('span');
         const taskItem = this.closest(".task-item"); // taskItem
 
         // ✅ 切換已完成樣式
@@ -32,35 +31,55 @@ function bindCheckboxToggle(checkbox) {
 // ✅ 新增任務主函式
 let currentCategory = 'general';  // 預設分類
 
+// ✅ 綁定側邊欄分類按鈕（General / Work / Personal / Study）
 document.querySelectorAll('.sidebar-item').forEach(item => {
     item.addEventListener('click', function () {
+        // 移除所有 active 樣式
+        document.querySelectorAll('.sidebar-item').forEach(i => {
+            i.classList.remove('active');
+        });
+        // 加上目前點擊項目 active 樣式
+        this.classList.add('active');
+
+        // 更新目前分類並篩選
         currentCategory = this.innerText.trim().toLowerCase();
         filterTasks('category', currentCategory);
     });
 });
+
 function addTask() {
     const taskText = taskInput.value.trim();
     if (taskText === '') return;
 
     const newTask = document.createElement('div');
     newTask.className = 'task-item bg-white border border-gray-200 rounded-lg p-4 shadow-sm';
-     // 這行加上分類屬性
+    // 這行加上分類屬性
     newTask.setAttribute('data-category', currentCategory);
 
     const now = new Date();
     const timeString = now.getHours() + ':' + String(now.getMinutes()).padStart(2, '0');
 
-    newTask.innerHTML = `
-        <div class="flex items-center">
-            <input type="checkbox" class="checkbox w-4 h-4 rounded-full border-2 border-gray-300 mr-3">
-            <span class="text-sm">${taskText}</span>
-            <div class="ml-auto flex items-center space-x-2">
-                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">${timeString}</span>
-                <button class="delete-btn text-gray-400 hover:text-gray-600">🗑️</button>
 
-            </div>
+
+    newTask.innerHTML = `
+    <div class="flex items-center">
+        <input type="checkbox" class="checkbox w-4 h-4 rounded-full border-2 border-gray-300 mr-3">
+        <span class="text-sm flex-1">${taskText}</span>
+        <select class="task-category-select border rounded text-xs" style="width: 100px; margin-left: 8px;">
+        <option value="general">General</option>
+        <option value="work">Work</option>
+        <option value="personal">Personal</option>
+        <option value="study">Study</option>
+        </select>
+        <div class="ml-2 flex items-center space-x-2">
+        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">${timeString}</span>
+        <button class="delete-btn text-gray-400 hover:text-gray-600">🗑️</button>
         </div>
+    </div>
     `;
+    const categorySelector = newTask.querySelector('.task-category-select');
+    bindCategorySelector(categorySelector, newTask);
+
 
     taskList.prepend(newTask);
     taskInput.value = '';
@@ -105,37 +124,33 @@ function filterTasks(filterType, category = null) {
         task.style.display = shouldShow ? 'block' : 'none';
     });
 }
-// ✅ 綁定側邊欄分類按鈕（General / Work / Personal / Study）
-document.querySelectorAll('.sidebar-item').forEach(item => {
-   item.addEventListener('click', function () {
-    // 先移除所有 active 樣式
-    document.querySelectorAll('.sidebar-item').forEach(i => {
-      i.classList.remove('active');
-    });
-    // 再加上目前點擊項目 active
-    this.classList.add('active');
 
-    const categoryName = this.innerText.trim().toLowerCase();
-    filterTasks('category', categoryName);
-  });
-});
+// ✅ 綁定任務的下拉選單，讓分類變更時更新 data-category
+function bindCategorySelector(selectElement, taskElement) {
+    if (!selectElement) return;  // 避免 null 錯誤
+    selectElement.addEventListener('change', function () {
+        const newCategory = this.value;
+        taskElement.setAttribute('data-category', newCategory);
+    });
+}
+
 
 // ✅ 綁定上方的 All / Completed 按鈕
-document.querySelectorAll('.flex.space-x-2 button').forEach(btn => {
-  btn.classList.add('cursor-pointer');
-  btn.addEventListener('click', () => {
-    // 移除所有按鈕 active
-    document.querySelectorAll('.flex.space-x-2 button').forEach(b => b.classList.remove('active'));
+document.querySelectorAll('.category-btn button').forEach(btn => {
+    btn.classList.add('cursor-pointer');
+    btn.addEventListener('click', () => {
+        // 移除所有按鈕 active
+        document.querySelectorAll('.category-btn button').forEach(b => b.classList.remove('active'));
 
-    // 加上目前按鈕 active
-    btn.classList.add('active');
+        // 加上目前按鈕 active
+        btn.classList.add('active');
 
-    if (btn.textContent === 'All') {
-      document.querySelectorAll('.task-item').forEach(task => {
-        task.style.display = 'block';
-      });
-    } else if (btn.textContent === 'Completed') {
-      filterTasks('completed');
-    }
-  });
+        if (btn.textContent === 'All') {
+            document.querySelectorAll('.task-item').forEach(task => {
+                task.style.display = 'block';
+            });
+        } else if (btn.textContent === 'Completed') {
+            filterTasks('completed');
+        }
+    });
 });

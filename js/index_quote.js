@@ -33,3 +33,4 @@ function showRandomQuote() {
 
 // 載入頁面時執行
 showRandomQuote();
+

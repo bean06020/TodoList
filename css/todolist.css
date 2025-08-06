@@ -6,11 +6,19 @@ body {
 .sidebar-item {
   cursor: pointer;
 }
-
-.sidebar-item.active {
+/* .sidebar-item. {
     background-color: #f0f0f0;
     border-radius: 8px;
+} */
+.sidebar-item.active {
+  background-color: #b8b9bb; 
+  color: #000000;
+  font-weight: 600;
 }
+.sidebar-item.active svg {
+  stroke: #000000;
+}
+
 
 .task-item:hover {
     background-color: #f5f5f5;
@@ -26,11 +34,41 @@ body {
 }
 
 
-.sidebar-item.active {
-  background-color: #e0f2fe; /* 淡藍底 */
-  color: #0284c7; /* 深藍字 */
+/* All & Complete 按鈕基礎樣式 */
+.btn-all,
+.btn-completed {
+  padding: 0.25rem 1rem; /* py-1 px-4 */
+  border-radius: 9999px; /* rounded-full */
+  font-size: 0.875rem; /* text-sm */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.btn-all {
+  background-color: #e5e7eb; /* bg-gray-200 */
+  color: #1f2937; /* text-gray-800 */
+}
+
+.btn-completed {
+  background-color: #ffffff; /* bg-white */
+  color: #4b5563; /* text-gray-600 */
+  border: 1px solid #e5e7eb; /* border border-gray-200 */
+}
+
+/* active 狀態切換 */
+.btn-all.active {
+  background-color: #4b5563; /* 文字白色底色深 */
+  color: white;
   font-weight: 600;
+  border: none;
 }
-.sidebar-item.active svg {
-  stroke: #0284c7;
+
+.btn-completed.active {
+  background-color: #4b5563;
+  color: white;
+  font-weight: 600;
+  border: none;
 }
+
+
