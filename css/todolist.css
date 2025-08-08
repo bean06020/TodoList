@@ -35,6 +35,14 @@ body {
 
 
 /* All & Complete 按鈕基礎樣式 */
+.category-btn.button {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* space-x-3 相當約12px */
+  padding: 10px;
+}
+
+
 .btn-all,
 .btn-completed {
   padding: 0.25rem 1rem; /* py-1 px-4 */
@@ -42,19 +50,25 @@ body {
   font-size: 0.875rem; /* text-sm */
   cursor: pointer;
   transition: all 0.3s ease;
-  border: none;
-}
-
-.btn-all {
-  background-color: #e5e7eb; /* bg-gray-200 */
+  background-color: #fff; /* bg-gray-200 */
   color: #1f2937; /* text-gray-800 */
+  border: 1px solid #e5e7eb; /* border border-gray-200 */
+
 }
 
-.btn-completed {
-  background-color: #ffffff; /* bg-white */
-  color: #4b5563; /* text-gray-600 */
+.clearCompletedBtn {
+  padding: 0.25rem 1rem; /* py-1 px-4 */
+  border-radius: 9999px; /* rounded-full */
+  font-size: 0.875rem; /* text-sm */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: #ff0000; /* bg-gray-200 */
+  color: #ffffff; /* text-gray-800 */
   border: 1px solid #e5e7eb; /* border border-gray-200 */
+  margin-left: auto;
 }
+
+
 
 /* active 狀態切換 */
 .btn-all.active {
